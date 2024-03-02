@@ -1,48 +1,7 @@
 import React, { useContext, useState } from 'react';
-import styled from 'styled-components';
 import { UsersContext } from '../../hooks/context';
-
-const FormContainer = styled.div({
-  width: '300px',
-  padding: '10px',
-  margin: '0 auto',
-  color: 'black'
-});
-
-const FormGroup = styled.div({
-  marginBottom: '20px',
-});
-
-const Label = styled.label({
-  display: 'block',
-  marginBottom: '5px',
-  letterSpacing: '1.5px',
-  textAlign: 'left'
-});
-
-const Input = styled.input<{ invalid: boolean }>((props) => ({
-  width: '100%',
-  padding: '8px',
-  fontSize: '16px',
-  borderColor: props.invalid ? 'red' : 'initial',
-}));
-
-const ErrorMessage = styled.span({
-  fontSize: '12px',
-  color: 'red',
-  marginTop: '5px',
-});
-
-const Button = styled.button({
-  padding: '10px 20px',
-  fontSize: '16px',
-  backgroundColor: '#007bff',
-  color: 'white',
-  border: 'none',
-  borderRadius: '5px',
-  margin: '20px',
-  cursor: 'pointer',
-});
+import { FormContainer, FormGroup, Label, Input, ErrorMessage, Button } from './styled';
+import { validateField } from './utils';
 
 interface Props {
   onClose: () => void
@@ -50,7 +9,7 @@ interface Props {
 
 const AddUserForm = ({ onClose }: Props) => {
   const { actions } = useContext(UsersContext);
-  
+
   const [formData, setFormData] = useState({
     name: '',
     age: 0,
@@ -81,24 +40,6 @@ const AddUserForm = ({ onClose }: Props) => {
     setErrors(newErrors);
   };
 
-  const validateField = (name: string, value: any) => {
-    switch (name) {
-      case 'name':
-        return value.length < 3 ? 'Name must be at least 3 characters' : '';
-      case 'age':
-        return isNaN(value) || value <= 0 ? 'Age must be a number greater than 0' : '';
-      case 'email':
-        return /\S+@\S+\.\S+/.test(value) ? '' : 'Invalid email format';
-      case 'avatar':
-        return isValidImageUrl(value) ? '' : 'Invalid avatar URL';
-      default:
-        return '';
-    }
-  };
-
-  const isValidImageUrl = (url: string) => {
-    return url.match(/\.(jpeg|jpg|gif|png)$/) != null;
-  };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
