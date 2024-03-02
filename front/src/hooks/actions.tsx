@@ -1,4 +1,4 @@
-import { Actions, CreateUserInput, UpdateUserInput, User } from "./utils"
+import { Actions, CreateUserInput, UpdateUserInput, User } from "../@types"
 import { usersReducer } from "./reducer"
 import makeClient from "../client"
 import config from "../config"

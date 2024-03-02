@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react'
-import { UsersContext } from '../state-managment/context'
+import { UsersContext } from '../hooks/context'
 import UpdateUserForm from "./forms/updateUserForm"
 import styled from 'styled-components'
 import Modal from './modals/default'

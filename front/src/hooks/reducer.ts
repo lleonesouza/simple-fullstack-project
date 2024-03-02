@@ -1,4 +1,4 @@
-import { Actions, User } from './utils';
+import { Actions, User } from "../@types";
 
 export type Action =
     | { type: Actions.ADD_USER, payload: User }
