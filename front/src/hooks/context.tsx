@@ -1,5 +1,5 @@
 import { ReactNode, createContext, useContext, useReducer } from "react";
-import { ActionMethods, User } from "./utils";
+import { ActionMethods, User } from "../@types";
 import { useActions } from "./actions";
 
 const initialState: User[] = [];

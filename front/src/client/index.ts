@@ -1,5 +1,5 @@
 import axios from "axios"
-import { User } from "../state-managment/utils"
+import { User } from "../@types"
 
 const makeClient = (url: string) => {
     return {
